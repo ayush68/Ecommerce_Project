@@ -1,0 +1,53 @@
+<div class="orders-container">
+  <h1>Orders</h1>
+
+  <div class="loading" *ngIf="loading">Loading orders...</div>
+
+  <div class="no-orders" *ngIf="!loading && orders.length === 0">
+    No orders found.
+  </div>
+
+  <div class="orders-list" *ngIf="!loading && orders.length > 0">
+    <div class="order-card" *ngFor="let order of orders">
+      <div class="order-header">
+        <div>
+          <h3>Order #{{ order.orderId }}</h3>
+          <p class="order-date">{{ order.orderDate | date:'medium' }}</p>
+        </div>
+        <div class="order-total">
+          ₹{{ order.totalAmount }}
+        </div>
+      </div>
+
+      <div class="order-details">
+        <div class="customer-info">
+          <p><strong>Customer:</strong> {{ order.customerName }}</p>
+          <p><strong>Email:</strong> {{ order.customerEmail }}</p>
+          <p><strong>Shipping:</strong> {{ order.shippingAddress }}</p>
+        </div>
+
+        <div class="order-items">
+          <h4>Items</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of order.items">
+                <td>{{ item.productName }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>₹{{ item.price }}</td>
+                <td>₹{{ item.price * item.quantity }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="product-detail-container" *ngIf="!loading && product">
+  <div class="product-image-section">
+    <img [src]="getImageUrl()" [alt]="product.name" />
+  </div>
+
+  <div class="product-info-section">
+    <h1>{{ product.name }}</h1>
+    <p class="brand">by {{ product.brand }}</p>
+
+    <div class="price">₹{{ product.price }}</div>
+
+    <div class="availability" [class.available]="product.productAvailable">
+      {{ product.productAvailable ? '✓ In Stock' : '✗ Out of Stock' }}
+      <span *ngIf="product.productAvailable">({{ product.stockQuantity }} available)</span>
+    </div>
+
+    <div class="category">
+      <strong>Category:</strong> {{ product.category }}
+    </div>
+
+    <div class="release-date" *ngIf="product.releaseDate">
+      <strong>Release Date:</strong> {{ product.releaseDate }}
+    </div>
+
+    <div class="description">
+      <h3>Description</h3>
+      <p>{{ product.description || 'No description available.' }}</p>
+    </div>
+
+    <div class="message" *ngIf="message">{{ message }}</div>
+
+    <div class="actions">
+      <button (click)="addToCart()" [disabled]="!product.productAvailable" class="btn-add-cart">
+        Add to Cart
+      </button>
+      <a routerLink="/products" class="btn-back">Back to Products</a>
+    </div>
+  </div>
+</div>
+
+<div class="loading" *ngIf="loading">Loading...</div>
+<div class="not-found" *ngIf="!loading && !product">Product not found.</div>

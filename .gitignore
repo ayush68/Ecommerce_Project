@@ -1,0 +1,157 @@
+```gitignore
+# ==========================================
+# IDEs and Editors
+# ==========================================
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+.apt_generated/
+.factorypath
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# ==========================================
+# Java / Spring Boot / Maven
+# ==========================================
+
+# Compiled Java files
+*.class
+
+# Maven build output
+target/
+**/target/
+
+# Packaged applications
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+logs/
+
+# JVM crash dumps
+hs_err_pid*
+replay_pid*
+
+# Spring Boot configuration containing secrets
+application-local.properties
+application-local.yml
+application-local.yaml
+application-dev.properties
+application-dev.yml
+application-dev.yaml
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# ==========================================
+# Angular / Node.js / npm
+# ==========================================
+
+# Node dependencies
+node_modules/
+
+# Angular build output
+dist/
+out-tsc/
+
+# Angular cache
+.angular/cache/
+
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Package manager caches
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+
+# ==========================================
+# Testing and Coverage
+# ==========================================
+
+coverage/
+.nyc_output/
+test-results/
+
+# ==========================================
+# Operating System Files
+# ==========================================
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# ==========================================
+# Temporary Files
+# ==========================================
+
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# ==========================================
+# Database Files (local development)
+# ==========================================
+
+*.mv.db
+*.trace.db
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# Local Environment and Tool Files
+# ==========================================
+
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.idea_modules/
+
+
+# Eclipse workspace metadata
+.metadata/
+**/.metadata/
+
+# Java build output
+target/
+**/target/
+
+# Angular dependencies and build output
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.angular/
+
+```

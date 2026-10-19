@@ -1,0 +1,49 @@
+<div class="product-list-container">
+  <div class="header">
+    <h1>Products</h1>
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="searchKeyword"
+        placeholder="Search products..."
+        (keyup.enter)="searchProducts()"
+      />
+      <button (click)="searchProducts()">Search</button>
+      <button (click)="searchKeyword = ''; loadProducts()" class="btn-secondary">Clear</button>
+    </div>
+  </div>
+
+  <div class="message" *ngIf="message">{{ message }}</div>
+
+  <div class="loading" *ngIf="loading">Loading...</div>
+
+  <div class="products-grid" *ngIf="!loading">
+    <div class="product-card" *ngFor="let product of products">
+      <div class="product-image">
+        <img [src]="getImageUrl(product)" [alt]="product.name" />
+        <span class="availability" [class.available]="product.productAvailable">
+          {{ product.productAvailable ? 'In Stock' : 'Out of Stock' }}
+        </span>
+      </div>
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p class="brand">{{ product.brand }}</p>
+        <p class="category">{{ product.category }}</p>
+        <p class="price">₹{{ product.price }}</p>
+        <p class="stock">Stock: {{ product.stockQuantity }}</p>
+      </div>
+      <div class="product-actions">
+        <button (click)="addToCart(product)" [disabled]="!product.productAvailable" class="btn-add-cart">
+          Add to Cart
+        </button>
+        <a [routerLink]="['/product', product.id]" class="btn-view">View</a>
+        <a [routerLink]="['/edit-product', product.id]" class="btn-edit">Edit</a>
+        <button (click)="deleteProduct(product.id)" class="btn-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-products" *ngIf="!loading && products.length === 0">
+    No products found.
+  </div>
+</div>
